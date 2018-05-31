@@ -22,6 +22,15 @@ function sleep(milliseconds) {
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
+  document.getElementById('reset').addEventListener('click', function() {
+    scoreJoueur = 0;
+    scoreCPU = 0;
+    localStorage.setItem('scoreJoueur', 0);
+    localStorage.setItem('scoreCPU', 0);
+    document.getElementById("CPUScore").innerHTML = scoreCPU;
+    document.getElementById("userScore").innerHTML = scoreJoueur;
+    sessionStorage.clear();
+  });
   document.getElementById('rock').addEventListener('click', function() {
     console.log('rock');
 
@@ -45,8 +54,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
     gameOn(3);
   });
 
-  scoreJoueur = 0;
-  scoreCPU = 0;
+
+  if (localStorage.getItem('scoreJoueur')) {
+    scoreJoueur = localStorage.getItem('scoreJoueur');
+  } else {
+    scoreJoueur = 0;
+  }
+
+  if (localStorage.getItem('scoreCPU')) {
+    scoreCPU = localStorage.getItem('scoreCPU');
+  } else {
+    scoreCPU = 0;
+  }
+  document.getElementById("CPUScore").innerHTML = scoreCPU;
+  document.getElementById("userScore").innerHTML = scoreJoueur;
+
 });
 
 
@@ -100,6 +122,9 @@ function gameOn(choice){
   }
   document.getElementById("CPUScore").innerHTML = scoreCPU;
   document.getElementById("userScore").innerHTML = scoreJoueur;
+
+  localStorage.setItem('scoreCPU', scoreCPU);
+  localStorage.setItem('scoreJoueur', scoreJoueur);
 
   setTimeout(function(){
     document.getElementById("Result").style.visibility = "visible";
