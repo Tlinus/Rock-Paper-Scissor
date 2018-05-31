@@ -1,47 +1,69 @@
-.container{
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Indie Flower', cursive;
+  color: white;
+}
+
+.title{
+  text-align: center;
+  font-size: 13vW;
+}
+
+.choice, .choiceMade{
+  font-size: 13vw;
+  border-radius: 1500px;
+  text-align:  center;
+  padding: 100px;
+  margin: auto 0;
+}
+.choice:hover{
+  background-color: #E5443B;
+  color: #111111  !important;
+  cursor: pointer;
+}
+.label p{
+  font-size: 3vw;
+}
+.text-center{
+  text-align: center;
+}
+.container-choice{
   width: 80%;
-  margin-left: 15%;
+  margin-left: 10%;
 }
 
-.choice {
-  display: inline-block;
-  width: 32%;
-}
-.choice img{
- max-width: 100%;
-}
-
-.YourChoice, .ComputerChoice{
-  display: inline-block;
-  width: 30%;
-  min-height: 450px;
-}
-
-.YourChoice p, .ComputerChoice p{
-  font-family: Lato;
-  font-size:  100px;
+.score {
   width: 100%;
   text-align: center;
-  vertical-align: center;
+  font-size: 5vw;
 }
-
-.game{
+body{
+  background-color: #BE312A;
+  height: auto;
+}
+footer{
+  font-size:  4vw;
+  text-align:  center;
+}
+.Result{
+  transform : rotate(45deg);
+  font-size: 12vw;
+  position:absolute;
+  float: right;
   width: 100%;
-  vertical-align: top;
+  text-align: center;
+  visibility: hidden;
+}
+.container-game-on{
+  visibility: hidden;
+  height: 0px;
+  overflow: hidden;
 }
 
-.game div{
-  vertical-align: top;
-}
-
-#YourSCORE{
-text-align:center;
-  width: 15%;
-  display: inline-block;
-}
-
-#cpuscore{
-text-align:center;
-  width: 15%;
-  display: inline-block;
+@media (max-width: 543px) {
+  .container-choice{
+    width: 60%;
+    margin-left: 20%;
+  }
 }

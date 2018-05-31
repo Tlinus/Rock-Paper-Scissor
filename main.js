@@ -12,41 +12,52 @@ function getRandom(){
   return Math.floor(Math.random() * (1 - 4) + 4);
 }
 
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function(event) {
   document.getElementById('rock').addEventListener('click', function() {
     console.log('rock');
 
-        document.getElementById("YourChoice").style.backgroundImage = "url('images/rock.png')"
+        document.getElementById("YourChoice").innerHTML = '<i class=" bounceInLeft animated far fa-hand-rock"></i>';
+
     gameOn(1);
 
   });
   document.getElementById('paper').addEventListener('click', function() {
     console.log('paper');
 
-    document.getElementById("YourChoice").style.backgroundImage = "url('images/paper.png')"
+    document.getElementById("YourChoice").innerHTML  = '<i class=" bounceInLeft animated far fa-hand-paper"></i>'
+
     gameOn(2);
   });
   document.getElementById('scissor').addEventListener('click', function() {
     console.log('scissor');
 
-    document.getElementById("YourChoice").style.backgroundImage = "url('images/scissor.png')"
+    document.getElementById("YourChoice").innerHTML  = '<i class=" bounceInLeft animated far fa-hand-scissors"></i>'
+
     gameOn(3);
   });
 
   scoreJoueur = 0;
   scoreCPU = 0;
-
-
-
 });
 
-document.getElementById("YourChoice").style.backgroundRepeat = "no-repeat";
-document.getElementById("YourChoice").style.backgroundPosition = "50% 50%";
-document.getElementById("ComputerChoice").style.backgroundRepeat = "no-repeat";
-document.getElementById("ComputerChoice").style.backgroundPosition = "50% 50%";
 
 function gameOn(choice){
+  document.getElementById("container-choice").style.visibility = "hidden";
+  document.getElementById("container-choice").style.height = "0px";
+  document.getElementById("container-choice").style.overflow = "hidden";
 
+  document.getElementById("container-game-on").style.visibility = "visible";
+  document.getElementById("container-game-on").style.height = "auto";
+  document.getElementById("container-game-on").style.overflow = "visible";
 
   choiceCPU = getRandom();
   while(choice == choiceCPU){
@@ -55,7 +66,7 @@ function gameOn(choice){
 
   switch (choiceCPU) {
   case 1:
-    document.getElementById("ComputerChoice").style.backgroundImage = "url('images/rock.png')"
+    document.getElementById("CPUChoice").innerHTML = '<i class=" bounceInRight animated far fa-hand-rock"></i>';
     if (choice == 2) {
       UserWin = true;
     }else{
@@ -63,7 +74,7 @@ function gameOn(choice){
     }
     break;
   case 2:
-    document.getElementById("ComputerChoice").style.backgroundImage = "url('images/paper.png')"
+    document.getElementById("CPUChoice").innerHTML = '<i class="far fa-hand-paper bounceInRight animated "></i>';
     if (choice == 3) {
       UserWin = true;
     }else{
@@ -71,7 +82,7 @@ function gameOn(choice){
     }
     break;
   case 3:
-      document.getElementById("ComputerChoice").style.backgroundImage = "url('images/scissor.png')"
+      document.getElementById("CPUChoice").innerHTML = '<i class="far fa-hand-scissors bounceInRight animated "></i>';
       if (choice == 1) {
         UserWin = true;
       }else{
@@ -80,12 +91,36 @@ function gameOn(choice){
       break;
   }
 
-  if (UserWin) {
+  if (!UserWin) {
     scoreCPU++;
+    document.getElementById("Result").innerHTML = "You Loose";
   }else{
     scoreJoueur++;
+    document.getElementById("Result").innerHTML = "You Win";
   }
+  document.getElementById("CPUScore").innerHTML = scoreCPU;
+  document.getElementById("userScore").innerHTML = scoreJoueur;
 
-  document.getElementById("scoreCPU").innerHTML = scoreCPU;
-  document.getElementById("scoreJoueur").innerHTML = scoreJoueur;
+  setTimeout(function(){
+    document.getElementById("Result").style.visibility = "visible";
+    document.getElementById("Result").classList.add("animated");
+  }, 1000);
+
+  setTimeout(function(){
+    document.getElementById("container-game-on").style.visibility = "hidden";
+    document.getElementById("container-game-on").style.height = "0px";
+    document.getElementById("container-game-on").style.overflow = "hidden";
+
+    document.getElementById("container-choice").style.visibility = "visible";
+    document.getElementById("container-choice").style.height = "auto";
+    document.getElementById("container-choice").style.overflow = "visible";
+
+    document.getElementById("Result").style.visibility = "hidden";
+    document.getElementById("Result").classList.remove("animated");
+
+  }, 3000);
+
+
+
+
 }

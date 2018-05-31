@@ -2,52 +2,81 @@
 
 <head>
   <title>Pierre Feuille Ciseau</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/css/bootstrap.css" />
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   <link rel="stylesheet" href="main.css">
-  <link rel="icon" type="image" href="images/#.jpg" />
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link rel="stylesheet" href="animate.css">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <META NAME="Copyright" content="Pierre feuille Ciseau">
 </head>
 
 <body>
-  <header>
 
-  </header>
-  <div class="container">
-    <div class="choice rock" id="rock">
-      <img src="images/rock.png" alt="rock" />
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 title">
+        <h1 class="title bounceInDown animated">Chifumi 2.0</h1>
+      </div>
     </div>
-    <div class="choice paper" id="paper">
-      <img src="images/paper.png" alt="paper" />
+    <div class="row container-choice rotateInUpLeft animated" id="container-choice">
+      <div class="col-xs-12  col-sm-4 choice" id="rock">
+        <i class="far fa-hand-rock"></i>
+
+      </div>
+      <div class="col-xs-12 col-sm-4 choice" id="paper">
+        <i class="far fa-hand-paper"></i>
+      </div>
+      <div class="col-xs-12 col-sm-4  choice" id="scissor">
+        <i class="far fa-hand-scissors"></i>
+      </div>
     </div>
-    <div class="choice scissor" id="scissor">
-      <img src="images/scissor.png" alt="scissor" />
+
+    <div class="row container-game-on hidden" id="container-game-on">
+      <div class="Result flip" id="Result">
+        You Win
+      </div>
+      <div class="col-xs-0  col-sm-2">
+      </div>
+      <div class="col-xs-6  col-sm-4 label text-center">
+        <p>
+          Your Choice
+        </p>
+      </div>
+      <div class="col-xs-6  col-sm-4 label text-center ">
+        <p>
+          CPU choice
+        </p>
+      </div>
+      <div class="col-xs-0 col-sm-2" style="height: 88px;">
+      </div>
+
+      <div class="col-xs-0  col-sm-2">
+      </div>
+      <div class="col-xs-6  col-sm-4 choiceMade" id="YourChoice">
+        <p>
+          Your Choice
+        </p>
+      </div>
+      <div class="col-xs-6  col-sm-4 choiceMade" id="CPUChoice">
+      </div>
     </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <p class="score">
+          user-score : <span id="userScore">0</span> - VS - CPU Score : <span id="CPUScore">0</span> </p>
+      </div>
+      <footer class="col-xs-12 text-center">
+        <a href="https://fr.linkedin.com/in/lemoingthibault">
+           <i class="fab fa-linkedin"></i>
+        </a>
+      </footer>
+    </div>
+
+
   </div>
-
-  <div class="game">
-    <div id="YourSCORE">
-      <p>
-        your score
-      </p>
-      <p id="scoreJoueur">
-
-      </p>
-    </div>
-    <div class="YourChoice" id="YourChoice">
-
-    </div>
-    <div class="ComputerChoice" id="ComputerChoice">
-
-    </div>
-    <div id="cpuscore">
-      <p>
-        CPU score
-      </p>
-      <p id="scoreCPU">
-
-      </p>
-    </div>
 
 </body>
 
